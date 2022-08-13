@@ -1,6 +1,6 @@
 resource "aws_elb" "lb" {
     name_prefix = "${var.environment}-"
-    subnets = ["${aws_subnet.webserver.id}", "${aws_subnet.database.id}"]
+    subnets = ["${aws_subnet.webserver.id}"]
     health_check {
         healthy_threshold = 2
         unhealthy_threshold = 2
@@ -15,7 +15,7 @@ resource "aws_elb" "lb" {
         lb_protocol = "http"
     }
     cross_zone_load_balancing = true
-    instances = ["${aws_instance.webserver.id}", "${aws_instance.webserver.id}"]
+    instances = ["${aws_instance.webserver.id}"]
     security_groups = ["${aws_security_group.LoadBalancerSG.id}"]
 }
  

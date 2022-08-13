@@ -1,5 +1,5 @@
 resource "aws_instance" "webserver" {
-    ami = "${lookup(var.aws_centos_awis,var.region)}"
+    ami = "${lookup(var.aws_centos_amis,var.region)}"
     instance_type = "t2.medium"
     tags = {
         Name = "${var.environment}-FRONTEND001"
@@ -11,7 +11,7 @@ resource "aws_instance" "webserver" {
     vpc_security_group_ids = ["${aws_security_group.webserver.id}"]
 }
 resource "aws_instance" "database" {
-    ami = "${lookup(var.aws_centos_awis,var.region)}"
+    ami = "${lookup(var.aws_centos_amis,var.region)}"
     instance_type = "t2.medium"
     tags = {
         Name = "${var.environment}-FRONTEND002"

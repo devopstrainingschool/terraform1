@@ -1,10 +1,8 @@
-variable "region"
-{
+variable "region" {
     default = "us-east-2"
 }
 
-variable "aws_centos_amis"
-{
+variable "aws_centos_amis" {
     default = {
         "us-east-2" = "ami-0f041b9708f60ca57"
     }

@@ -9,12 +9,12 @@ variable "aws_centos_amis" {
 }
 
 variable "environment"{
-    type = "string"
+    type = string
     default = "dev"
 }
 
 variable "application" {
-    type = "string"
+    type = string
     default = "httpd-app"
 }
 

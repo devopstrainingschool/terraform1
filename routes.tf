@@ -7,16 +7,16 @@ resource "aws_route_table" "internet-default" {
   }
 
   tags = {
-      Name = "Route-Table-US-Default"
+      Name = "Route-Table-Default"
   }
 }
 
-resource "aws_route_table_association" "eu-west-1a-public" {
+resource "aws_route_table_association" "webserver" {
   subnet_id = "${aws_subnet.webserver.id}"
   route_table_id = "${aws_route_table.internet-default.id}"
 }
 
-resource "aws_route_table_association" "eu-west-1b-public" {
+resource "aws_route_table_association" "database" {
   subnet_id = "${aws_subnet.database.id}"
   route_table_id = "${aws_route_table.internet-default.id}"
 }

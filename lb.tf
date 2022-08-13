@@ -1,7 +1,7 @@
 
 resource "aws_elb" "elb" {
   name = "terraform-elb"
-  availability_zones = ["us-east-2a"]
+  subnets = ["${aws_subnet.webserver.id}"]
   
 
   listener {
@@ -16,11 +16,13 @@ resource "aws_elb" "elb" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "HTTP:8000/"
+    target              = "HTTP:80/"
     interval            = 30
   }
 
-  instances                   = [aws_instance.webserver.id]
+ 
+  instances = ["${aws_instance.webserver.id}"]
+  security_groups = ["${aws_security_group.LoadBalancerSG.id}"]
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true

@@ -11,6 +11,14 @@ resource "aws_security_group" "webserver" {
     cidr_blocks      = [aws_vpc.dts.cidr_block]
    
   }
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+   
+  }
 
   egress {
     from_port        = 0

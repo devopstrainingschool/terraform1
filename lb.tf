@@ -1,6 +1,6 @@
 
 resource "aws_elb" "elb" {
-  name               = "terraform-elb"
+  name = "terraform-elb"
   availability_zones = ["us-east-2a"]
   
 

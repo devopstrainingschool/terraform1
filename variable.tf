@@ -1,12 +1,12 @@
 variable "region"
 {
-    default = "eu-central-1"
+    default = "us-east-2"
 }
 
-variable "aws_ubuntu_amis"
+variable "aws_centos_amis"
 {
     default = {
-        "eu-central-1" = "ami-0f041b9708f60ca57"
+        "us-east-2" = "ami-0f041b9708f60ca57"
     }
 }
 
@@ -17,7 +17,7 @@ variable "environment"{
 
 variable "application" {
     type = "string"
-    default = "gitlab"
+    default = "httpd-app"
 }
 
 #variable "key_name" {

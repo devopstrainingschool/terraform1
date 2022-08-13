@@ -4,7 +4,7 @@ variable "region" {
 
 variable "aws_centos_amis" {
     default = {
-        "us-east-2" = "ami-0f041b9708f60ca57"
+        "us-east-2" = "ami-0a5588cee1fe39ff"
     }
 }
 

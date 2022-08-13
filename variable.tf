@@ -28,5 +28,5 @@ variable "mgmt_ips" {
 }
 variable "key_name" {
     type = string
-    default = "ec2key"
+    default = "mykey1"
 }

@@ -4,9 +4,9 @@ resource "tls_private_key" "mykey1" {
 }
 resource "aws_key_pair" "keypair" {
     key_name = "${var.key_name}"
-    public_key = "${tls_private_key.mykey.public_key_openssh}"
+    public_key = "${tls_private_key.mykey1.public_key_openssh}"
 }
 output "private_key" {
-  value = "${tls_private_key.mykey.private_key_pem}"
+  value = "${tls_private_key.mykey1.private_key_pem}"
   sensitive = true
 }

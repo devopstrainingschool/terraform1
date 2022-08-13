@@ -26,3 +26,7 @@ variable "application" {
 variable "mgmt_ips" {
     default = ["0.0.0.0/0"]
 }
+variable "key_name" {
+    type = string
+    default = "ec2key"
+}

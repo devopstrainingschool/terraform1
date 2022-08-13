@@ -10,7 +10,7 @@ resource "aws_subnet" "webserver" {
 
 
 resource "aws_subnet" "database" {
-  availability_zone = "" 
+  availability_zone = "us-east-2b" 
   cidr_block = "10.0.2.0/24" 
   map_public_ip_on_launch = true 
   vpc_id = "${aws_vpc.dts.id}" #

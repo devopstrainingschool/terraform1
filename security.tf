@@ -1,3 +1,29 @@
+resource "aws_security_group" "webserver" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.dts.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.dts.cidr_block]
+   
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+   
+  }
+
+  tags = {
+    Name = "webserver-SG"
+  }
+}
 resource "aws_security_group" "LoadBalancerSG" {
     name = "LoadBalancerSG"
     vpc_id = "${aws_vpc.dts.id}"
@@ -35,36 +61,3 @@ resource "aws_security_group" "LoadBalancerSG" {
         Name = "SG-Loadbalancer"
     }
 }
-resource "aws_security_group" "webserver" {
-    name = "ApplicationSG"
-    vpc_id = "${aws_vpc.dts.id}"
-    description = "Security group for webservers"
-    ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "TCP"
-        cidr_blocks = ["0.0.0.0/0"]
-        description = "Allow incoming SSH traffic from Bastion Host"
-    }
-    ingress {
-        from_port = 80
-        to_port = 80
-        protocol = "TCP"
-        security_groups = ["${aws_security_group.LoadBalancerSG.id}"]
-        description = "Allow incoming HTTP traffic from lbs"
-    }
-    
-    
-    egress {
-        from_port = 0
-        to_port = 0
-        protocol = "-1"
-        self = true
-    }
-    
-   
-    tags = {
-        Name = "SG-WebServer"
-    }
-}
-

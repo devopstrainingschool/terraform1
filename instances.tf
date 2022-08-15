@@ -2,7 +2,7 @@ resource "aws_instance" "webserver" {
     ami = "${lookup(var.aws_centos_amis,var.region)}"
     instance_type = "t2.medium"
     tags = {
-        Name = "${var.environment}-FRONTEND001"
+        Name = "${var.environment}-application"
         Environment = "${var.environment}"
         sshUser = "centos"
     }
@@ -14,7 +14,7 @@ resource "aws_instance" "database" {
     ami = "${lookup(var.aws_centos_amis,var.region)}"
     instance_type = "t2.medium"
     tags = {
-        Name = "${var.environment}-FRONTEND002"
+        Name = "${var.environment}-database"
         Environment = "${var.environment}"
         sshUser = "centos"
     }

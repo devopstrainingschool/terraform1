@@ -1,9 +1,8 @@
 terraform {
   backend "s3" {
     bucket  = "terraform-remote-state-s31"
-    key     = "terraform-infrastructure.tfstate"
+    key     = "terraform-remote-state-s31/terraform-infrastructure.tfstate"
     region  = "us-east-2"
-    encrypt = "true"
-    dynamodb_table = "hands-on-cloud-terraform-remote-state-dynamodb"
+   
   }
 }
